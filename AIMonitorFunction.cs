@@ -36,12 +36,12 @@ namespace AIMonitor
 
                 if (aiResponse.Value.ExceptionsCount.Sum > 0)
                 {
-                    FirebaseMessage.SendAsync(applicationName, "Er is wat stuk, ga kijken!");
                     log.LogInformation($"Fouten gevonden in {applicationName}");
+                    FirebaseMessage.SendAsync(applicationName, "Er is wat stuk, ga kijken!");                    
                 }
                 else
                 {
-                    log.LogInformation("Geen fouten gevonden");
+                    log.LogInformation($"{applicationName} geen fouten gevonden");
                 }
             }
             else
