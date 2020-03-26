@@ -4,6 +4,9 @@
 # Azure Functions localsettings file
 local.settings.json
 
+# firebase admin account
+ai-alerts-firebase-adminsdk.json
+
 # User-specific files
 *.suo
 *.user
