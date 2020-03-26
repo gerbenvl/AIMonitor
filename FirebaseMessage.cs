@@ -1,16 +1,19 @@
 ﻿using FirebaseAdmin;
 using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
+using Microsoft.Azure.WebJobs;
+using System.IO;
 
 namespace AIMonitor
 {
     public static class FirebaseMessage
     {
-        public static void SendAsync(string title, string body)
+        public static void SendAsync(string title, string body, ExecutionContext context)
         {
+            var accountSettingsFile = Path.Combine(context.FunctionDirectory, "..\\ai-alerts-firebase-adminsdk.json");
             var appOptions = new AppOptions()
             {
-                Credential = GoogleCredential.FromFile("ai-alerts-firebase-adminsdk.json")
+                Credential = GoogleCredential.FromFile(accountSettingsFile)
             };
 
             FirebaseApp firebaseApp;
