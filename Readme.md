@@ -36,7 +36,7 @@ Add a file named "ai-alerts-firebase-adminsdk.json" with your google FireBase se
 ## Deploy
 Deploy the function to Azure.
 
-Ad the setting named "AiInstancesToMonitor" to your "Application settings". Here you can add it as a normal json array. For example: 
+Add the setting named "AiInstancesToMonitor" to your "Application settings". Here you can add it as a normal json array. For example: 
 
 ```json
 [
