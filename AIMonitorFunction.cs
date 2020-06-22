@@ -10,7 +10,7 @@ namespace AIMonitor
     public static class AIMonitorFunction
     {
         [FunctionName("AIMonitorFunction")]
-        public static void Run([TimerTrigger("0 */3 * * * *")]TimerInfo time, ILogger log, ExecutionContext context)
+        public static void Run([TimerTrigger("0 */2 * * * *")]TimerInfo time, ILogger log, ExecutionContext context)
         {
             string aiInstancesToMonitorSetting = Environment.GetEnvironmentVariable("AiInstancesToMonitor");
             var aiInstancesToMonitor = JsonConvert.DeserializeObject<List<AIInstanceSetting>>(aiInstancesToMonitorSetting);
@@ -24,7 +24,7 @@ namespace AIMonitor
         private static void CheckAiInstance(string aiApplicationID, string aiApiKey, string applicationName, ILogger log, ExecutionContext context)
         {
             // PT5M = laatste 5 minuten, voor de zekerheid
-            string applicationInsightsEndpoint = $"https://api.applicationinsights.io/v1/apps/{aiApplicationID}/metrics/exceptions/count?timespan=PT5M";
+            string applicationInsightsEndpoint = $"https://api.applicationinsights.io/v1/apps/{aiApplicationID}/metrics/exceptions/count?timespan=PT3M";
 
             var applicationInsightsHttpClient = new HttpClient();
             applicationInsightsHttpClient.DefaultRequestHeaders.Add("x-api-key", aiApiKey);
