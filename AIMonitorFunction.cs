@@ -37,17 +37,12 @@ namespace AIMonitor
                 if (aiResponse.Value.ExceptionsCount.Sum > 0)
                 {
                     log.LogInformation($"Fouten gevonden in {applicationName}");
-                    FirebaseMessage.SendAsync(applicationName, "Er is wat stuk, ga kijken!", context);                    
-                }
-                else
-                {
-                    log.LogInformation($"{applicationName} geen fouten gevonden");
+                    FirebaseMessage.SendAsync(applicationName, "Er is wat stuk, ga kijken!", context);
                 }
             }
             else
             {
                 const string error = "De monitor function kan niet bij de API";
-                log.LogInformation(error);
                 throw new Exception(error);
             }
         }
