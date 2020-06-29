@@ -10,16 +10,15 @@ namespace AIMonitor
     {
         public static void SendAsync(string title, string body, ExecutionContext context)
         {
-            var accountSettingsFile = Path.Combine(context.FunctionDirectory, "..\\ai-alerts-firebase-adminsdk.json");
-            var appOptions = new AppOptions()
-            {
-                Credential = GoogleCredential.FromFile(accountSettingsFile)
-            };
-
             FirebaseApp firebaseApp;
 
             if (FirebaseApp.DefaultInstance == null)
             {
+                var accountSettingsFile = Path.Combine(context.FunctionDirectory, "..\\ai-alerts-firebase-adminsdk.json");
+                var appOptions = new AppOptions()
+                {
+                    Credential = GoogleCredential.FromFile(accountSettingsFile)
+                };
                 firebaseApp = FirebaseApp.Create(appOptions);
             }
             else
