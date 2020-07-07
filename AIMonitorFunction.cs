@@ -20,7 +20,11 @@ namespace AIMonitor
         {
             string aiInstancesToMonitorSetting = Environment.GetEnvironmentVariable("AiInstancesToMonitor");
             var aiInstancesToMonitor = JsonConvert.DeserializeObject<List<AIInstanceSetting>>(aiInstancesToMonitorSetting).ToArray();
-            _aiInstanceChecker.CheckAiInstances(aiInstancesToMonitor, log, context);
+            _aiInstanceChecker.CheckAiInstances(aiInstancesToMonitor);
+
+            //TODO berichten sturen op de output
+            //checker naar monitor rename
+
         }
     }
 }

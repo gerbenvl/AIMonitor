@@ -1,10 +1,11 @@
 ﻿using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace AIMonitor
 {
     public interface IAIInstanceChecker
     {
-        void CheckAiInstances(AIInstanceSetting[] aiInstancesToCheck, ILogger log, ExecutionContext context);
+        IEnumerable<AppStatus> CheckAiInstances(AIInstanceSetting[] aiInstancesToCheck);
     }
 }
